@@ -1,0 +1,722 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* DealCart Brand Colors */
+  --color-primary: #4f46e5;
+  --color-primary-light: #6366f1;
+  --color-secondary: #22d3ee;
+  --color-secondary-dark: #06b6d4;
+
+  /* Dark Backgrounds */
+  --color-bg-900: #0b0f19;
+  --color-bg-800: #0f172a;
+  --color-bg-700: #111827;
+  --color-bg-600: #1e2433;
+  --color-bg-500: #243048;
+
+  /* Semantic */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-muted: #64748b;
+
+  /* Glass */
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Outfit", sans-serif;
+
+  /* Animations */
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-fade-up: fade-up 0.5s ease-out forwards;
+}
+
+:root {
+  --background: #0b0f19;
+  --foreground: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+  to { box-shadow: 0 0 40px rgba(34, 211, 238, 0.5); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+  z-index: -1;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1e2433 25%, #243048 50%, #1e2433 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+  border-radius: 8px;
+}
+
+.price-up {
+  color: #ef4444;
+}
+
+.price-down {
+  color: #22c55e;
+}
+
+.price-neutral {
+  color: #64748b;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #243048;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+/* ===== TRANSITIONS ===== */
+a, button {
+  transition: all 0.2s ease;
+}
+
+/* ===== RECHARTS RESPONSIVE ===== */
+.recharts-responsive-container {
+  max-width: 100%;
+}
+
+/* ===== INPUT RESET ===== */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #1e2433 inset;
+  -webkit-text-fill-color: #f1f5f9;
+  caret-color: #f1f5f9;
+}
+
+/* ===== PRICE TICKER ===== */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-container {
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.ticker-container::before,
+.ticker-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ticker-container::before {
+  left: 0;
+  background: linear-gradient(to right, #0b0f19, transparent);
+}
+
+.ticker-container::after {
+  right: 0;
+  background: linear-gradient(to left, #0b0f19, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  animation: ticker-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* ===== DEAL SCORE ===== */
+@keyframes deal-score-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.deal-score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  min-width: 48px;
+  height: 24px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.deal-score-badge.great {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  animation: deal-score-pulse 2s ease-in-out infinite;
+}
+
+.deal-score-badge.good {
+  background: rgba(34, 211, 238, 0.15);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: #22d3ee;
+}
+
+.deal-score-badge.fair {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.deal-score-badge.bad {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+/* ===== FAKE SALE WARNING ===== */
+@keyframes fake-sale-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+}
+
+.fake-sale-badge {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  animation: fake-sale-glow 2s ease-in-out infinite;
+}
+
+/* ===== SPARKLINE ===== */
+.sparkline-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 32px;
+  padding: 4px 0;
+}
+
+.sparkline-bar {
+  flex: 1;
+  min-width: 3px;
+  max-width: 6px;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.3s ease;
+}
+
+/* ===== CARD 3D TILT ===== */
+.product-card-3d {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.product-card-3d:hover {
+  transform: translateY(-6px) rotateX(2deg);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(79, 70, 229, 0.2);
+}
+
+/* ===== SHARE CARD ===== */
+.share-card {
+  background: linear-gradient(145deg, #111827, #1e2433);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.share-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4f46e5, #22d3ee);
+}
+
+/* ===== SEARCH INPUT ===== */
+.search-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px 10px 36px;
+  color: #f1f5f9;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: rgba(79, 70, 229, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-input::placeholder {
+  color: #374151;
+}
+
+/* ===== SORT SELECT ===== */
+.sort-select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #f1f5f9;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sort-select:focus {
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+.sort-select option {
+  background: #1e2433;
+  color: #f1f5f9;
+}
+
+/* ===== TOOLTIP COPY ===== */
+@keyframes copy-flash {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.copy-toast {
+  animation: copy-flash 1.5s ease forwards;
+}
+
+/* ===== TRASH ANIMATION ===== */
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: rgba(239, 68, 68, 0.1);
+  cursor: pointer;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  transition-duration: 0.3s;
+}
+.bin-bottom {
+  width: 14px;
+}
+.bin-top {
+  width: 16px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+.bin-button:hover {
+  background-color: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+.bin-button:active {
+  transform: scale(0.9);
+}
+
+/* ===== ATTACH / DETAILS BUTTON ===== */
+.attach-button {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.attach-icon {
+  stroke: #a5b4fc;
+  transition: all 0.3s ease;
+}
+
+.attach-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a5b4fc;
+  transition: color 0.3s ease;
+}
+
+.attach-button:hover {
+  background-color: rgba(79, 70, 229, 0.25);
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+.attach-button:hover .attach-icon {
+  stroke: #c7d2fe;
+  transform: rotate(-15deg) scale(1.15);
+}
+
+.attach-button:hover .attach-label {
+  color: #c7d2fe;
+}
+
+.attach-button:active {
+  transform: scale(0.95);
+}
+
+
+
+/* From Uiverse.io by Madflows */ 
+.madflows-sign-out-button {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #1e2433;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.madflows-sign-out-button:hover::before {
+  transform: scaleX(1);
+}
+
+.madflows-sign-out-button .button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.madflows-sign-out-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+  transition: all 0.475s;
+}
+
+/* From Uiverse.io by reglobby */ 
+.user-profile {
+  width: 131px;
+  height: 51px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background: linear-gradient(to bottom right, #4f46e5 0%, rgba(79, 70, 229, 0) 30%);
+  background-color: rgba(79, 70, 229, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile:hover,
+.user-profile:focus {
+  background-color: rgba(79, 70, 229, 0.3);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.4);
+  outline: none;
+}
+
+.user-profile-inner {
+  width: 127px;
+  height: 47px;
+  border-radius: 13px;
+  background-color: #0b0f19;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.user-profile-inner svg {
+  width: 27px;
+  height: 27px;
+  fill: #fff;
+}
+
+/* From Uiverse.io by H_K_MENON */ 
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #22d3ee;
+  box-shadow: 0 0 0 2px #4f46e5;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #22d3ee;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #fff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #22d3ee;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+/* From Uiverse.io by SteveBloX */ 
+.steveblox-add-btn {
+  width: 156px;
+  height: 60px;
+  border: 3px solid #4f46e5;
+  border-radius: 45px;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: #1e2433;
+  color: #f1f5f9;
+  font-size: 1.1em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steveblox-add-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #22d3ee);
+  border-color: #22d3ee;
+  color: white;
+  font-size: 1.3em;
+}
+
+/* From Uiverse.io by adamgiebl */ 
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.5em 0.8em 1.2em;
+  color: white;
+  background: #4f46e5;
+  background: linear-gradient(135deg, #4f46e5 0%, #22d3ee 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em rgba(79, 70, 229, 0.6);
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 8px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em rgba(79, 70, 229, 0.6);
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em rgba(79, 70, 229, 0.6);
+}
