@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore presentation and unused test files
+DealCart_Presentation*
+Hackovium*
+*.zip
+dealcart_*.png
+test-*.js
+
+# Ignore API test routes
+src/app/api/test/
+
