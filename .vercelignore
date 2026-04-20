@@ -1,0 +1,17 @@
+# Presentation and media files
+DealCart_Presentation.pdf
+Hackovium-VibeCraft-Edition.html
+*.png
+*.jpg
+*.zip
+
+# Tests
+test-amazon.js
+test-flipk.js
+
+# Agent instructions
+AGENTS.md
+CLAUDE.md
+
+# Supabase migrations (handled by Supabase CLI, not Vercel)
+supabase/
